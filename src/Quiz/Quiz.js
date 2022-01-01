@@ -1,0 +1,20 @@
+import React from "react";
+import Answers from "./Answers/Answers";
+import "../styles/quiz.css";
+// import "../styles/grid-list.css";
+import ProgressBar from "./ProgressBar/ProgressBar";
+import MiniPlayer from "./MiniPlayer/MiniPlayer";
+
+const Quiz = () => {
+  return (
+    <>
+      <h1>Pick three of your favorite Star Wars Flims</h1>
+      <h4>Question can have multiple answers</h4>
+      <Answers />
+      <ProgressBar />
+      <MiniPlayer />
+    </>
+  );
+};
+
+export default Quiz;
