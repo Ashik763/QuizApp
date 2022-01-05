@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 // import "../../styles/style.css";
 import { Link } from "react-router-dom";
+import { useAuth } from "../../Contexts/AuthContext";
 
 const Form = () => {
   //   console.log(props);
+  const [username,setUsername ] = useState("");
+  const [email,setEmail ] = useState("");
+  const [password,setPassword] = useState("");
+  const [confirmPassword,setConfirmPassword] = useState("");
+  const [agree,setAgree] = useState("");
+
+  const {signup} = useAuth
+    
   return (
     <form className="signup form">
       <div className="textInput">
-        <input type="text" placeholder="Enter name" />
+        <input type="text" placeholder="Enter name" value={username} onChange />
         <span className="material-icons-outlined"> person </span>
       </div>
 

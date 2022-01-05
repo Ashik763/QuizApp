@@ -9,27 +9,30 @@ import Signup from "./Components/Signup/Signup";
 import Login from "./Components/Login/Login";
 import Quiz from "./Quiz/Quiz";
 import Result from "./Components/Result/Result";
+import AuthProvider from "./Components/Contexts/AuthContext";
 
 function App() {
   return (
     <Router>
-      <Layout>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/signup">
-            <Signup />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
+      <AuthProvider>
+        <Layout>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/signup">
+              <Signup />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
 
-          <Route path="/result">
-            <Result />
-          </Route>
-        </Switch>
-      </Layout>
+            <Route path="/result">
+              <Result />
+            </Route>
+          </Switch>
+        </Layout>
+      </AuthProvider>
     </Router>
   );
 }
