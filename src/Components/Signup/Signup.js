@@ -1,4 +1,5 @@
 import React from "react";
+import SignupForm from "../SignupForm.js/SignupForm";
 import "../styles/style.css";
 import Form from "./Form/Form";
 import Illustration from "./Illustration/Illustration";
@@ -9,7 +10,7 @@ const Signup = () => {
       <h1>Create an account </h1>
       <div className="column">
         <Illustration />
-        <Form />
+        <SignupForm />
       </div>
     </>
   );
