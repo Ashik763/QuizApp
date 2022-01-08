@@ -10,6 +10,8 @@ import Login from "./Components/Login/Login";
 import Quiz from "./Quiz/Quiz";
 import Result from "./Components/Result/Result";
 import AuthProvider from "./Components/Contexts/AuthContext";
+import PrivateRoute from "./Components/PrivateRoute.js/PrivateRoute";
+import PublicRoute from "./Components/PublicRoute/PublicRoute";
 
 function App() {
   return (
@@ -20,9 +22,9 @@ function App() {
             <Route exact path="/">
               <Home />
             </Route>
-            <Route path="/signup">
+            <PublicRoute path="/signup">
               <Signup />
-            </Route>
+            </PublicRoute>
             <Route path="/login">
               <Login />
             </Route>
@@ -30,6 +32,9 @@ function App() {
             <Route path="/result">
               <Result />
             </Route>
+            <PrivateRoute path="/quiz">
+              <Quiz />
+            </PrivateRoute>
           </Switch>
         </Layout>
       </AuthProvider>
