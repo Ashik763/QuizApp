@@ -32,7 +32,7 @@ function App() {
             <Route path="/result">
               <Result />
             </Route>
-            <PrivateRoute path="/quiz">
+            <PrivateRoute path="/quiz/:id">
               <Quiz />
             </PrivateRoute>
           </Switch>
