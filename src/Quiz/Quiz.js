@@ -6,6 +6,7 @@ import ProgressBar from "./ProgressBar/ProgressBar";
 import MiniPlayer from "./MiniPlayer/MiniPlayer";
 import { useParams } from "react-router-dom";
 import useQuestions from "../Components/hooks/useQuestions";
+import _ from "lodash";
 
 const initialState = null;
 const reducer = (state, action) => {
@@ -17,6 +18,11 @@ const reducer = (state, action) => {
         });
       });
       return action.value;
+    case "answer":
+      const questions = _.cloneDeep(state);
+      questions[action.questionId].options[action.optionIndex].checked =
+        action.value;
+      return questions;
     default:
       return state;
   }
