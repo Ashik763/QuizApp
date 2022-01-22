@@ -13,9 +13,16 @@ const reducer = (state, action) => {
   switch (action.type) {
     case "questions":
       action.value.forEach((question) => {
-        question.options.forEach((option) => {
-          option.checked = false;
+        // console.log(action.value);
+        // console.log(question);
+        question.forEach((q) => {
+          q.options.forEach((option) => {
+            option.checked = false;
+          });
         });
+        // question.options.forEach((option) => {
+        //   option.checked = false;
+        // });
       });
       return action.value;
     case "answer":
@@ -29,6 +36,7 @@ const reducer = (state, action) => {
 };
 
 const Quiz = () => {
+  // let i = 0;
   const { id } = useParams();
   const { loading, error, questions } = useQuestions(id);
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -40,13 +48,32 @@ const Quiz = () => {
     });
   }, [questions]);
 
+  function handleAnswerChange(e, index) {
+    dispatch({
+      type: "answer",
+      questionID: currentQuestion,
+      optionIndex: index,
+      value: e.target.checked,
+    });
+  }
+
   return (
     <>
-      <h1>Pick three of your favorite Star Wars Flims</h1>
-      <h4>Question can have multiple answers</h4>
-      <Answers />
-      <ProgressBar />
-      <MiniPlayer />
+      {loading && <div>Loading... </div>}
+      {error && <div>There was an error!</div>}
+      {!loading && !error && qna && qna.length > 0 && (
+        <>
+          {console.log(qna)}
+          {/* <h1>{qna[currentQuestion].title}hello</h1> */}
+          <h4>Question can have multiple answers</h4>
+          <Answers
+            options={qna[currentQuestion].options}
+            handleChange={handleAnswerChange}
+          />
+          <ProgressBar />
+          <MiniPlayer />
+        </>
+      )}
     </>
   );
 };
